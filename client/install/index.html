@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <style type="text/css">
+        body {
+            padding-top: 100px;
+        }
+
+        .form-container {
+            font-size: 130%;
+            width: 450px;
+            margin: auto;
+        }
+
+        .credits {
+            border-top: 1px solid #ddd;
+            margin-top: 40px;
+            padding-top: 20px;
+        }
+
+        .footer {
+            position:fixed;
+            font-size: 120%;
+            text-align:center;
+            width: 100%; 
+            bottom:0;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Create an account with ECRegS</h2>
+        <% if(locals.error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <% if(locals.success) { %>
+        <div class="alert alert-success"><%= success %></div>
+        <% } %>
+        <form method="post">
+            <div class="form-group">
+                <label for="username">New Username</label>
+                <input type="text" name="username" id="username" value="<%= locals.username || '' %>" class="form-control" autofocus />
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" class="form-control" />
+            </div>
+            <br>
+            <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Create User</button>
+                <button type="button" onclick="window.location.href='/login'" class="btn btn-link btn-lg btn-block">Log in to your account</button>
+            </div>
+        </form>
+    </div>
+</body>
+<footer class="footer"> 
+
+    <p class="form-group"> 
+        ECRegS&nbsp;© Copyright 2018. All rights reserved. 
+    </p> 
+</footer>
+
+</html>

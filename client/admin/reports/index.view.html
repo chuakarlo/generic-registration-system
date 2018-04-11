@@ -1,0 +1,122 @@
+﻿<div class="account-index">
+    <h1>Event Reports</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Please select event:</h3>
+            <select 
+                ng-style="{'width':'200px', 'font-size':'150%'}" 
+                ng-options="event.title for event in vm.pages" 
+                ng-model="vm.selectedEvent">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <form method="post">
+                <div class="form-group">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <h1>Certificates</h1>
+    <div class="row">
+        <div class="col-sm-6">
+            <form method="post">
+                <div style="display:flex; justify-content: left;" >
+                    <div class="form-group">
+                        <label for="firstname">Manual</label>
+                    </div>
+                    <div class="form-group"  style="margin-left: 10px;">
+                        <input style="width: 200px" type="text" id="particpantname" class="form-control" ng-model="vm.particpantname" />
+                    </div>
+                    <div class="form-group"  style="margin-left: 10px;">
+                        <button class="btn btn-primary" ng-click="vm.generatecert()">Generate Certificate</button>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <form method="get">
+                <div style="display:flex; justify-content: left;" >
+                    <div style="vertical-align: middle;">
+                        <label for="firstname">All Participants</label>
+                    </div>
+                    <div style="margin-left: 10px;">
+                        <button style="width: 195px" class="btn btn-primary" ng-click="vm.generateallcert()">Generate All  Certificates</button>
+                    </div>                   
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <h1>Attendance</h1>
+    <div class="row">
+        <div class="col-sm-8">
+        <form method="post">
+            <div style="display: flex; justify-content: left">
+                <div class="form-group">
+                    <input type="date" ng-model="vm.chosendate">
+                </div>            
+                <div class="form-group" style="margin-left: 10px;">
+                        <button style="width: 195px" class="btn btn-primary" ng-click="vm.generateattendance()">Generate Attendance List</button>
+                </div>
+                <div class="form-group" style="margin-left: 10px">
+                        <button class="btn btn-primary" ng-click="vm.downloadattendance()">Download</button>
+                </div>                    
+            </div>
+            <div class="form-group" id="exportattendance">
+                    <table class="pages-table table table-striped">
+                        <tr>
+                            <th class="text-center">Participant's Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Job Title</th>
+                            <th class="text-center">Check-In</th>
+                            <th class="text-center">Check-Out</th>
+                            <th></th> 
+                        </tr>
+                        <tr ng-repeat="getattend in vm.getattend">
+                            <td> {{getattend.lastname}}, {{getattend.firstname}} {{getattend.middlename}} {{getattend.suffix}}</td>
+                            <td>{{getattend.email}}</td>
+                            <td>{{getattend.jobtitle}}</td>
+                            <td>{{getattend.checkinshow}}</td>
+                            <td>{{getattend.checkoutshow}}</td>
+                        </tr>  
+                    </table>                  
+                </div>         
+        </form>
+        </div>
+    </div>
+    <br>
+    <h1>Participant's List</h1>
+    <div class="row">
+        <div class="col-sm-8">
+            <form method="post">
+                <div style="display: flex; justify-content: left">
+                    <div class="form-group">
+                       <button class="btn btn-primary" ng-click="vm.showlist()">View Participant's List</button>                                       
+                    </div>
+                    <div class="form-group" style="margin-left: 10px">
+                        <button class="btn btn-primary" ng-click="vm.downloadlist()">Download</button>
+                    </div>
+                    <br>
+                </div> 
+
+                <div class="form-group" id="exportlist">
+                    <table class="pages-table table table-striped" id="partstable">
+                        <tr>
+                            <th class="text-center">Participant's Name</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Job Title</th>
+                            <th class="text-center">Home Address</th>
+                            <th></th> 
+                        </tr>
+                        <tr ng-repeat="parts in vm.parts">
+                            <td> {{parts.lastname}}, {{parts.firstname}} {{parts.middlename}} {{parts.suffix}}</td>
+                            <td>{{parts.email}}</td>
+                            <td>{{parts.jobtitle}}</td>
+                            <td>{{parts.address}}, {{parts.city}}, {{parts.province}}, {{parts.country}}, {{parts.zipcode}}</td>
+                        </tr>  
+                    </table>                  
+                </div>               
+            </form>
+        </div>
+    </div>
+</div>

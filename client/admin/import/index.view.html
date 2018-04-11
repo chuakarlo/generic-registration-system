@@ -1,0 +1,26 @@
+﻿<div class="account-index">
+    <h1>Import Participants</h1>
+    <div class="row">
+        <div class="col-sm-4">
+			<h3>Please select event to add participants:</h3>
+			<select 
+		        ng-style="{'width':'200px', 'font-size':'150%'}" 
+		        ng-options="event.title for event in vm.pages" 
+		        ng-model="vm.selectedEvent">
+			</select>
+        </div>
+        <div class="col-sm-4">
+        	<form id="upload-form" enctype="multipart/form-data" method="post">
+        		<fieldset>
+        			<legend>Import Participants</legend>
+	        		<div>
+	        			<input type="file" on-read-file="showContent($fileContent)">
+	        		</div>
+	        		<div>
+	        			<button ng-click="vm.bulkRegister()">Import</button>
+	        		</div>
+	        	</fieldset>
+        	</form>
+        </div>
+    </div>
+</div>

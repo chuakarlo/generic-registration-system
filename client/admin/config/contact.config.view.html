@@ -1,0 +1,52 @@
+﻿<!-- Created file and functions to support contact form customization - Refer to BitBucket issue #35 -->
+<div class="account-index">
+    <h1>Event Contact Me Settings</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Please select event:</h3>
+            <select 
+                ng-style="{'width':'200px', 'font-size':'150%'}" 
+                ng-options="event.title for event in vm.pages" 
+                ng-model="vm.selectedEvent">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <form method="post">
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="contactname">Contact Name</label>
+                    </div>
+                    <div style="margin-left: 100px">
+                        <input type="text" id="contactname" class="form-control" ng-model="vm.contconfig.contactname" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="contactemail">Contact Email</label>
+                    </div>
+                    <div style="margin-left: 100px">
+                        <input type="text" id="contactemail" class="form-control" ng-model="vm.contconfig.contactemail" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="subject">Subject Text</label>
+                    </div>
+                    <div style="margin-left: 100px">
+                        <input type="text" id="subject" class="form-control" ng-model="vm.contconfig.subject" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Show Subject Text <input type="checkbox" ng-model="vm.contconfig.showsubject" /></label>
+                </div>
+                <div class="form-group">
+                    <label>Add Phone Field <input type="checkbox" ng-model="vm.contconfig.showphone" /></label>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="vm.find()">Get Settings</button>
+                    <button class="btn btn-default" ng-click="vm.update()">Update Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

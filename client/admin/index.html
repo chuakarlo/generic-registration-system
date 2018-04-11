@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ECRegS Platform</title>
+
+    <link rel="shortcut icon" href="/admin/_content/images/logo.png" type="image/png" />
+    <link rel="icon" href="/admin/_content/images/logo.png" type="image/png" />
+
+    <!-- bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- jquery ui -->
+    <link href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css" rel="stylesheet">
+
+    <link href="_dist/app.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- header -->
+    <header>
+        <h1>
+            ECReg System Console
+        </h1>
+        <br>
+
+        <ul class="nav nav-tabs">
+            <li ng-class="{active: activeTab === 'pages'}"><a href="#/pages">Events</a></li>
+            <li ng-class="{active: activeTab === 'account'}"><a href="#/account">Account</a></li>
+            <!--  Added tabs for email settings and contact form settings - Refer to BitBucket issue #1 and issue #33 -->
+            <li ng-class="{active: activeTab === 'emailconfig'}"><a href="#/emailconfig">Email Config</a></li>
+            <li ng-class="{active: activeTab === 'contactconfig'}"><a href="#/contactconfig">Contact Config</a></li>
+            <!-- Renamed tab to Walk-in Regs from Registration - Refer to BitBucket issue #21 -->
+            <!-- Added tab for manual registration of participants - Refer to BitBucket issue #14 -->
+            <li ng-class="{active: activeTab === 'registration'}"><a href="#/registration">Walk-in Regs</a></li>
+            <!-- Added tab for Participant Registration Configuration - Refer to BitBucket issue #36 -->
+            <li ng-class="{active: activeTab === 'regsConfig'}"><a href="#/regsConfig">Registration Config</a></li>
+            <!-- Added tab for importing list of participants - Refer to BitBucket issue #22 -->
+            <li ng-class="{active: activeTab === 'import'}"><a href="#/import">Import</a></li>
+            <!-- Added tab for event check-in of participants - Refer to BitBucket issue #23 -->
+            <li ng-class="{active: activeTab === 'checkin'}"><a href="#/checkin">Check-in</a></li>
+            <!-- Added tab for event reports of eveery event -->
+            <li ng-class="{active: activeTab === 'reports'}"><a href="#/reports">Reports</a></li>
+            <li><a href="/login" target="_self">Logout</a></li>
+
+        </ul>
+        
+<!-- LEO
+        <div class="logo">
+            <img src="/admin/_content/images/logo.png" />
+        </div>
+-->
+
+        <div class="flash-message" ng-if="flash">
+            <div class="{{'alert alert-' + flash.type}}" ng-bind="flash.message"></div>
+        </div>
+    </header>
+
+    <!-- main -->
+    <main ui-view></main>
+
+    <!-- footer -->
+    <footer></footer>
+
+    <!-- jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- underscore -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+
+    <!-- moment -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
+
+    <!-- angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+
+    <!-- ckeditor -->
+    <script src="//cdn.ckeditor.com/4.5.7/full/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.5.7/full/adapters/jquery.js"></script>
+
+    <!-- excel exports -->
+    <script src="//fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+
+    <!-- pdf exports -->
+    <script type="text/javascript" src="jspdf.min.js"></script>
+
+    <!-- Added functions to use QR code check-in - Refer to BitBucket issue #29 -->
+    <script>
+        function openChildWin() {   
+            var childWin = window.open("newindex.html", "_blank", "height=400, width=550, status=yes, toolbar=no, menubar=no, location=no,addressbar=no"); 
+        }
+
+        function setValue(val1) {
+
+            var qrdata = val1;
+            if(qrdata) {
+                var info = qrdata.split(",");
+                var lastname = info[0];
+                var firstname = info[1];
+                var event = info[2];
+
+                firstname = firstname.split(":");
+                lastname = lastname.split(":");
+                event = event.split(":");;
+
+                console.log('find(): ' + lastname[1] + ' ' + firstname[1] + ' ' + event[1]);  
+
+                firstname = firstname[1].trim();
+                lastname = lastname[1].trim();
+                eventID = event[1].trim();
+
+                $("#firstname").val(firstname);
+                $("#lastname").val(lastname);
+
+                // Added the following code for auto-validation using QR code - Refer to issue #28
+                $("#firstname").trigger("change");
+                $("#lastname").trigger("change");
+                $("#eventlist").val(eventID);
+                $("#eventlist").trigger("change");
+                $("#findbutton").click();
+            }
+        }
+    </script>
+
+    <script src="_dist/app.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<div class="registration">
+    <!-- Form is also for walk-in registration - Refer to BitBucket issue #21 -->
+    <h1>Walk-in/Manual Registration</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Please select event to register:</h3>
+            <select 
+                ng-style="{'width':'200px', 'font-size':'150%'}" 
+                ng-options="event.title for event in vm.pages" 
+                ng-model="vm.selectedEvent">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <form method="post">
+                <div class="form-group" ng-show="vm.showTitle">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" class="form-control" ng-model="vm.title" />
+                </div>
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" class="form-control" ng-model="vm.firstname" />
+                </div>
+                <div class="form-group" ng-show="vm.showMidName">
+                    <label for="middlename">Middle Name</label>
+                    <input type="middlename" id="password" class="form-control" ng-model="vm.middlename" />
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" class="form-control" ng-model="vm.lastname" />
+                </div>
+                <div class="form-group" ng-show="vm.showSuffix">
+                    <label for="suffix">Suffix</label>
+                    <input type="text" id="suffix" class="form-control" ng-model="vm.suffix" />
+                </div>
+                <div class="form-group" ng-show="vm.showGender">
+                    <label for="gender">Gender</label>
+                    <input type="text" id="gender" class="form-control" ng-model="vm.gender" />
+                </div>
+                <div class="form-group" ng-show="vm.showAge">
+                    <label for="age">Age</label>
+                    <input type="text" id="age" class="form-control" ng-model="vm.age" />
+                </div>
+                <div class="form-group" ng-show="vm.showJobTitle">
+                    <label for="jobtitle">Job Title</label>
+                    <input type="text" id="jobtitle" class="form-control" ng-model="vm.jobtitle" />
+                </div>
+                <div class="form-group" ng-show="vm.showPhone">
+                    <label for="phone">Phone</label>
+                    <input type="text" id="phone" class="form-control" ng-model="vm.phone" />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" class="form-control" ng-model="vm.email" required />
+                </div>
+                <div class="form-group" ng-show="vm.showNationality">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" class="form-control" ng-model="vm.nationality" />
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" id="address" class="form-control" ng-model="vm.address" />
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" class="form-control" ng-model="vm.city" />
+                </div>
+                <div class="form-group">
+                    <label for="province">Province/State</label>
+                    <input type="text" id="province" class="form-control" ng-model="vm.province" />
+                </div>
+                <div class="form-group">
+                    <label for="country">Country</label>
+                    <input type="text" id="country" class="form-control" ng-model="vm.country" />
+                </div>
+                <div class="form-group">
+                    <label for="zipcode">Postal Code</label>
+                    <input type="text" id="zipcode" class="form-control" ng-model="vm.zipcode" />
+                </div>
+                <div class="form-group" ng-show="vm.showAllergies">
+                    <label for="allergies">Food Allergies</label>
+                    <input type="text" id="allergies" class="form-control" ng-model="vm.allergies" />
+                </div>
+                <div class="form-group" ng-show="vm.showQuestions">
+                    <label for="questions">Questions/Concerns</label>
+                    <input type="text" id="questions" class="form-control" ng-model="vm.questions" />
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="vm.register()">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿<!-- Created file and functions to support confirmation email customization - Refer to BitBucket issue #9 -->
+<div class="account-index">
+    <h1>Event Confirmation Email Settings</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Please select event:</h3>
+            <select 
+                ng-style="{'width':'200px', 'font-size':'150%'}" 
+                ng-options="event.title for event in vm.pages" 
+                ng-model="vm.selectedEvent">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <form method="post">
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="salutation">Salutation Text</label>
+                    </div>
+                    <div style="margin-left: 130px">
+                        <input type="text" id="salutation" class="form-control" ng-model="vm.emailconfig.salutation" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="valediction">Valediction Text</label>
+                    </div>
+                    <div style="margin-left: 130px">
+                        <input type="text" id="valediction" class="form-control" ng-model="vm.emailconfig.valediction" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="subject">Subject Text</label>
+                    </div>
+                    <div style="margin-left: 130px">
+                        <input type="text" id="subject" class="form-control" ng-model="vm.emailconfig.subject" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div style="float:left">
+                        <label for="signature">Signature</label>
+                    </div>
+                    <div style="margin-left: 130px">
+                        <input type="text" id="signature" class="form-control" ng-model="vm.emailconfig.signature" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button class="btn btn-primary" ng-click="vm.find()">Get Settings</button>
+                    <button class="btn btn-default" ng-click="vm.update()">Update Settings</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

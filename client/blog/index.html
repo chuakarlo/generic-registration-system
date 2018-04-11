@@ -1,0 +1,116 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <base href="/" />
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="/_content/images/logo.png" type="image/png" />
+    <link rel="icon" href="/_content/images/logo.png" type="image/png" />
+
+    <title><%- locals.metaTitle || "ECRegS Platform" %></title>
+    <meta name="description" content="<%- locals.metaDescription || "ECRegS Platform" %>" />
+
+    <style>
+        /* fonts & icons */
+        <%- include('_content/fonts/montserrat.css') %>
+        <%- include('_content/icomoon/style.css') %>
+
+        /* bootstrap */
+        <%- include('_content/bootstrap.css') %>
+
+        /* syntax higlighter */
+        <%- include('_content/syntaxhighlighter/css/shCore.css') %>
+        <%- include('_content/syntaxhighlighter/css/shThemeDefault.css') %>
+
+        /* custom */
+        <%- include('_dist/app.css') %>
+    </style>
+
+</head>
+<body>
+
+    <!-- nav -->
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" ng-click="showNav = !showNav">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="/_content/images/TBD2.png" />
+                    <span id="mytitle"><%- locals.metaTitle %></span>
+                </a>
+            </div>
+            <div class="navbar-collapse ng-cloak" ng-class="{'in': showNav, 'collapse': !showNav}">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Added support for participant registration - Refer to BitBucket issue #7 -->
+                    <li><a href="/events/<%- locals.metaOwner %>/<%- locals.metaID %>" target="_self">Home</a></li>
+                    <li><a href="/register?orgID=<%- locals.metaOwner %>&evtID=<%- locals.metaID %>" target="_self">Register</a></li>
+                    <!-- Modified URL to make the contact form work - Refer to BitBucket issue #42 -->
+                    <li><a href="/contact?orgID=<%- locals.metaOwner %>&evtID=<%- locals.metaID %>" target="_self">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- main -->
+    <main ui-view>
+        <% if(locals.templateUrl) { %>
+            <div ng-non-bindable>
+                <%- include(locals.templateUrl) %>
+            </div>
+        <% } %>
+	</main>
+
+    <!-- footer -->
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h4>About</h4>
+                    <p>
+                        TBD. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container text-center copyright">
+        Powered by ECRegS.
+    </div>
+
+    <!-- syntax highlighter -->
+    <script src="/_content/syntaxhighlighter/js/shCore.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushCSharp.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushCss.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushJScript.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushPlain.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushSql.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushVb.js"></script>
+    <script src="/_content/syntaxhighlighter/js/shBrushXml.js"></script>
+    <script>
+        SyntaxHighlighter.defaults['gutter'] = true;
+        SyntaxHighlighter.defaults['smart-tabs'] = true;
+        SyntaxHighlighter.defaults['auto-links'] = true;
+        SyntaxHighlighter.defaults['collapse'] = false;
+        SyntaxHighlighter.defaults['light'] = false;
+        SyntaxHighlighter.defaults['tab-size'] = 4;
+        SyntaxHighlighter.defaults['toolbar'] = true;
+        SyntaxHighlighter.defaults['wrap-lines'] = true;
+    </script>
+
+    <!-- jquery -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <!-- angular -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-messages.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+
+    <script src="/_dist/app.min.js"></script>
+</body>
+</html>

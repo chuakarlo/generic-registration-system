@@ -1,0 +1,200 @@
+﻿<!-- Form is for Registration config tab content customization UI - Refer to BitBucket issue #37 -->
+<div class="account-index">
+    <h1>Participant Registration Config</h1>
+    <div class="row">
+        <div class="col-sm-4">
+            <h3>Please select event to register:</h3>
+            <select 
+                ng-style="{'width':'200px', 'font-size':'150%'}" 
+                ng-options="event.title for event in vm.pages" 
+                ng-model="vm.selectedEvent">
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <form method="post">
+
+                <table class="table">
+                    <tr>
+                        <th>Check to include</th>
+                        <th>Registration Forms</th>
+                    </tr>
+
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showTitle" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="title">Title</label>
+                                <input type="text" id="title" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" checked disabled></td>
+                            <td>
+                                <label for="firstname">First Name</label>
+                                <input type="text" id="firstname" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showMiddleName" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="middlename">Middle Name</label>
+                                <input type="middlename" id="password" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" checked disabled></td>
+                            <td>
+                                <label for="lastname">Last Name</label>
+                                <input type="text" id="lastname" class="form-control" ng-model="vm.lastname" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showSuffix" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="suffix">Suffix</label>
+                                <input type="text" id="suffix" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showGender" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="gender">Gender</label>
+                                <input type="text" id="gender" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showAge" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="age">Age</label>
+                                <input type="text" id="age" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showJobTitle" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="jobtitle">Job Title</label>
+                                <input type="text" id="jobtitle" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showPhone" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" checked disabled></td>
+                            <td>
+                                <label for="email">Email</label>
+                                <input type="text" id="email" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showNationality" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="nationality">Nationality</label>
+                                <input type="text" id="nationality" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showAddress" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="address">Address</label>
+                                <input type="text" id="address" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showCity" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="city">City</label>
+                                <input type="text" id="city" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showProvince" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="province">Province/State</label>
+                                <input type="text" id="province" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showCountry" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="country">Country</label>
+                                <input type="text" id="country" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showZipCode" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="zipcode">Postal Code</label>
+                                <input type="text" id="zipcode" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showAllergies" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="allergies">Food Allergies</label>
+                                <input type="text" id="allergies" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div class="form-group">
+                            <td><input type="checkbox" ng-model="vm.regsconfig.showQuestions" ng-true-value=true ng-false-value=false></td>
+                            <td>
+                                <label for="questions">Questions/Concerns</label>
+                                <input type="text" id="questions" class="form-control" />
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="form-group">
+                                <button class="btn btn-primary" ng-click="vm.find()">Get Settings</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <button class="btn btn-default" ng-click="vm.save()">Save</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
